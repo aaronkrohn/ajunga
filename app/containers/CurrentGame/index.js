@@ -23,12 +23,11 @@ export class CurrentGame extends React.PureComponent { // eslint-disable-line re
   constructor(props) {
     super(props);
 
+    this.handleFinalScore = this.handleFinalScore.bind(this);
   }
 
-  handleFinalScore() {
-    console.log('click');
-
-    this.props.addFinalScore([15, 11]);
+  handleFinalScore(score) {
+    this.props.addFinalScore(score);
   }
 
   render() {
@@ -38,9 +37,13 @@ export class CurrentGame extends React.PureComponent { // eslint-disable-line re
           <title>CurrentGame</title>
           <meta name="description" content="Description of CurrentGame"/>
         </Helmet>
+
         <GameOverview currentgame={this.props.currentgame}/>
-        <GameScore/>
-        <h1 onClick={this.handleFinalScore.bind(this)}>button</h1>
+
+        <GameScore
+          currentgame={this.props.currentgame}
+          handleFinalScore={this.handleFinalScore}
+        />
       </div>
     );
   }

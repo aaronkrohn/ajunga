@@ -14,14 +14,15 @@ class GameOverview extends React.PureComponent { // eslint-disable-line react/pr
     const {player1, player2, gameLength} = this.props.currentgame;
     return (
       <div>
+        <h2>Game Overview</h2>
         <div>
-          <h2>{player1.name}</h2>
-          <h2>{player1.gamesWon}</h2>
+          <span>{player1.name} </span>
+          <span>{player1.gamesWon}</span>
         </div>
 
         <div>
-          <h2>{player2.name}</h2>
-          <h2>{player2.gamesWon}</h2>
+          <span>{player2.name} </span>
+          <span>{player2.gamesWon}</span>
         </div>
       </div>
     );
