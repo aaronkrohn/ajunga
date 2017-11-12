@@ -45,6 +45,17 @@ export class CurrentGame extends React.PureComponent { // eslint-disable-line re
           currentgame={this.props.currentgame}
           handleFinalScore={this.handleFinalScore}
         />
+
+
+        <h2>Previous games</h2>
+        {
+          this.props.currentgame.score.map((score, index) => {
+            return (<div>
+              <span>{this.props.currentgame.player1.name} {score[0]}</span> |
+              <span> {this.props.currentgame.player2.name} {score[1]}</span>
+            </div>);
+          })
+        }
       </div>
     );
   }

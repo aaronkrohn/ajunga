@@ -45,12 +45,12 @@ class GameScore extends React.PureComponent { // eslint-disable-line react/prefe
     }
   }
 
-  addPoint(event, player) {
+  addPoint(event, isPlayerLeft) {
     if (this.state.wonGame) {
       return;
     }
 
-    const isPlayer1 = player === this.state.player1Name ? 'score1' : 'score2';
+    const isPlayer1 = isPlayerLeft ? 'score1' : 'score2';
     this.setState({ [isPlayer1]: this.state[isPlayer1] + 1 }, () => this.checkGameFinished());
   }
 
@@ -61,9 +61,9 @@ class GameScore extends React.PureComponent { // eslint-disable-line react/prefe
 
         {/* Player 1 */}
         <div>
-          Player1 score: {this.state.score1}
+          {this.props.currentgame.player1.name} score: {this.state.score1}
           <button
-            onClick={(event) => this.addPoint(event, this.state.player1Name)}
+            onClick={(event) => this.addPoint(event, true)}
             style={{ background: 'grey', marginLeft: 10 }}
           >
             point 1+
@@ -76,9 +76,9 @@ class GameScore extends React.PureComponent { // eslint-disable-line react/prefe
 
         {/* Player 2 */}
         <div>
-          Player2 score: {this.state.score2}
+          {this.props.currentgame.player2.name} score: {this.state.score2}
           <button
-            onClick={(event) => this.addPoint(event, this.state.player2Name)}
+            onClick={(event) => this.addPoint(event, false)}
             style={{ background: 'grey', marginLeft: 10 }}
           >
             point 1+
@@ -91,7 +91,7 @@ class GameScore extends React.PureComponent { // eslint-disable-line react/prefe
 
         {
           this.state.wonGame &&
-          <button onClick={() => this.resetGame()}>New game</button>
+          <button onClick={() => this.resetGame()} style={{ background: 'green', marginTop: 20 }}>New game</button>
         }
       </div>
     );
