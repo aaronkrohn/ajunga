@@ -16,6 +16,7 @@ import makeSelectCurrentGame from './selectors';
 import reducer from './reducer';
 import GameOverview from 'components/GameOverview';
 import GameScore from 'components/GameScore';
+import CenteredSection from './CenteredSection';
 
 import { addFinalScore, addGamesWon } from './actions';
 
@@ -33,40 +34,40 @@ export class CurrentGame extends React.PureComponent { // eslint-disable-line re
 
   render() {
     return (
-      <div>
+      <CenteredSection>
         <Helmet>
           <title>CurrentGame</title>
           <meta name="description" content="Description of CurrentGame"/>
         </Helmet>
 
-        <GameOverview currentgame={this.props.currentgame}/>
+        <GameOverview currentGame={this.props.currentGame}/>
 
         <GameScore
-          currentgame={this.props.currentgame}
+          currentGame={this.props.currentGame}
           handleFinalScore={this.handleFinalScore}
         />
 
 
         <h2>Previous games</h2>
         {
-          this.props.currentgame.score.map((score, index) => {
+          this.props.currentGame.score.map((score, index) => {
             return (<div>
-              <span>{this.props.currentgame.player1.name} {score[0]}</span> |
-              <span> {this.props.currentgame.player2.name} {score[1]}</span>
+              <span>{this.props.currentGame.player1.name} {score[0]}</span> |
+              <span> {this.props.currentGame.player2.name} {score[1]}</span>
             </div>);
           })
         }
-      </div>
+      </CenteredSection>
     );
   }
 }
 
 CurrentGame.propTypes = {
-  currentgame: PropTypes.object,
+  currentGame: PropTypes.object,
 };
 
 const mapStateToProps = createStructuredSelector({
-  currentgame: makeSelectCurrentGame(),
+  currentGame: makeSelectCurrentGame(),
 });
 
 function mapDispatchToProps(dispatch) {

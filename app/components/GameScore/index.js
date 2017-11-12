@@ -33,7 +33,7 @@ class GameScore extends React.PureComponent { // eslint-disable-line react/prefe
 
   checkGameFinished() {
     const { score1, score2 } = this.state;
-    const { gameLength } = this.props.currentgame;
+    const { gameLength } = this.props.currentGame;
     const hasReachedGameLength = (score1 >= gameLength || score2 >= gameLength);
     const clearTwoPoints = (score1 > score2 + 1 || score2 > score1 + 1);
 
@@ -51,6 +51,7 @@ class GameScore extends React.PureComponent { // eslint-disable-line react/prefe
     }
 
     const isPlayer1 = isPlayerLeft ? 'score1' : 'score2';
+    // SetState is asynchronous, so we have callback.
     this.setState({ [isPlayer1]: this.state[isPlayer1] + 1 }, () => this.checkGameFinished());
   }
 
@@ -61,7 +62,7 @@ class GameScore extends React.PureComponent { // eslint-disable-line react/prefe
 
         {/* Player 1 */}
         <div>
-          {this.props.currentgame.player1.name} score: {this.state.score1}
+          {this.props.currentGame.player1.name} score: {this.state.score1}
           <button
             onClick={(event) => this.addPoint(event, true)}
             style={{ background: 'grey', marginLeft: 10 }}
@@ -76,7 +77,7 @@ class GameScore extends React.PureComponent { // eslint-disable-line react/prefe
 
         {/* Player 2 */}
         <div>
-          {this.props.currentgame.player2.name} score: {this.state.score2}
+          {this.props.currentGame.player2.name} score: {this.state.score2}
           <button
             onClick={(event) => this.addPoint(event, false)}
             style={{ background: 'grey', marginLeft: 10 }}
