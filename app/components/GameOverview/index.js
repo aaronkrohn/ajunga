@@ -11,7 +11,7 @@ import React from 'react';
 
 class GameOverview extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
-    const {player1, player2, gameLength} = this.props.currentgame;
+    const { player1, player2 } = this.props.currentgame;
     return (
       <div>
         <h2>Game Overview</h2>

@@ -67,7 +67,7 @@ function mapDispatchToProps(dispatch) {
 
 const withConnect = connect(mapStateToProps, mapDispatchToProps);
 
-const withReducer = injectReducer({key: 'currentGame', reducer});
+const withReducer = injectReducer({ key: 'currentGame', reducer });
 
 export default compose(
   withReducer,
