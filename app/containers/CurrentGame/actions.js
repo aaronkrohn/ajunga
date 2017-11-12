@@ -5,11 +5,12 @@
  */
 
 import {
-  DEFAULT_ACTION,
+  ADD_FINAL_SCORE,
 } from './constants';
 
-export function defaultAction() {
+export function addFinalScore(score) {
   return {
-    type: DEFAULT_ACTION,
+    type: ADD_FINAL_SCORE,
+    payload: score,
   };
 }

@@ -4,4 +4,4 @@
  *
  */
 
-export const DEFAULT_ACTION = 'app/CurrentGame/DEFAULT_ACTION';
+export const ADD_FINAL_SCORE = 'app/CurrentGame/ADD_FINAL_SCORE';
