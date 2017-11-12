@@ -34,17 +34,20 @@ class GameScore extends React.PureComponent { // eslint-disable-line react/prefe
   checkGameFinished() {
     const { score1, score2 } = this.state;
     const { gameLength } = this.props.currentgame;
+    const hasReachedGameLength = (score1 >= gameLength || score2 >= gameLength);
+    const clearTwoPoints = (score1 > score2 + 1 || score2 > score1 + 1);
 
-    if ((score1 >= gameLength || score2 >= gameLength)) {
-      this.props.handleFinalScore([score1, score2]);
-
-      this.setState({ wonGame: score1 > score2 ? this.state.player1Name : this.state.player2Name });
+    if (hasReachedGameLength) {
+      if (clearTwoPoints) {
+        this.props.handleFinalScore([score1, score2]);
+        this.setState({ wonGame: score1 > score2 ? this.state.player1Name : this.state.player2Name });
+      }
     }
   }
 
   addPoint(event, player) {
     if (this.state.wonGame) {
-      return
+      return;
     }
 
     const isPlayer1 = player === this.state.player1Name ? 'score1' : 'score2';
