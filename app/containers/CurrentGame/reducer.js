@@ -7,6 +7,7 @@
 import { fromJS } from 'immutable';
 import {
   ADD_FINAL_SCORE,
+  INCREMENT_GAME_WON,
 } from './constants';
 
 const initialState = fromJS({
@@ -37,8 +38,11 @@ const initialState = fromJS({
 function currentGameReducer(state = initialState, action) {
   switch (action.type) {
     case ADD_FINAL_SCORE:
-      // return state.set.add('score', action.payload);
       return state.updateIn(['score'], (score) => score.push(action.payload));
+
+    case INCREMENT_GAME_WON:
+      return state.updateIn([action.payload, 'gamesWon'], (score) => score + 1);
+
     default:
       return state;
   }

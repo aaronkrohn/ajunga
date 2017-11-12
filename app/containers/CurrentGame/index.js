@@ -17,7 +17,7 @@ import reducer from './reducer';
 import GameOverview from 'components/GameOverview';
 import GameScore from 'components/GameScore';
 
-import { addFinalScore } from './actions';
+import { addFinalScore, addGamesWon } from './actions';
 
 export class CurrentGame extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   constructor(props) {
@@ -28,6 +28,7 @@ export class CurrentGame extends React.PureComponent { // eslint-disable-line re
 
   handleFinalScore(score) {
     this.props.addFinalScore(score);
+    this.props.addGamesWon(score[0] > score[1] ? 'player1' : 'player2');
   }
 
   render() {
@@ -61,6 +62,9 @@ function mapDispatchToProps(dispatch) {
   return {
     addFinalScore: (score) => {
       dispatch(addFinalScore(score));
+    },
+    addGamesWon: (playerName) => {
+      dispatch(addGamesWon(playerName));
     },
   };
 }
