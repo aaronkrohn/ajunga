@@ -22,11 +22,12 @@ const initialState = fromJS({
   player2: {
     age: null,
     gender: null,
-    isLeftPosition: true,
+    isLeftPosition: false,
     isRightHanded: true,
     name: 'Jason',
     gamesWon: 0,
   },
+  player1toStart: true,
   gameTotal: 3,
   gameLength: 11,
   numberServes: 2,

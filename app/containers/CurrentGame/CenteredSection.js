@@ -1,7 +1,9 @@
 import styled from 'styled-components';
 
 const CenteredSection = styled.section`
-  text-align: center;
+  margin: auto;
+  max-width: 900px;
+  padding: 25px;
 `;
 
 export default CenteredSection;
