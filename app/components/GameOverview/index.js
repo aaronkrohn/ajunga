@@ -92,10 +92,9 @@ const ServingBall = styled.span`
 `;
 
 
-class GameOverview extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
-
+class GameOverview extends React.PureComponent {
   switcherServer(force) {
-    //TODO Think we need to add each score to store to make things easier for us. INCREMENT_SCORE with payload of name.
+    // TODO Think we need to add each score to store to make things easier for us. INCREMENT_SCORE with payload of name.
   }
 
   render() {
