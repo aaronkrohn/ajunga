@@ -8,6 +8,7 @@ import { fromJS } from 'immutable';
 import {
   ADD_FINAL_SCORE,
   INCREMENT_GAME_WON,
+  CHECK_SERVER,
 } from './constants';
 
 const initialState = fromJS({
@@ -32,6 +33,7 @@ const initialState = fromJS({
   gameLength: 11,
   numberServes: 2,
   score: [],
+  changeServer: false,
   winner: null,
   startingPlayer: 'player1',
 });
@@ -44,6 +46,8 @@ function currentGameReducer(state = initialState, action) {
     case INCREMENT_GAME_WON:
       return state.updateIn([action.payload, 'gamesWon'], (score) => score + 1);
 
+    case CHECK_SERVER:
+      return state.updateIn(['changeServer'], () => !state.getIn(['changeServer']));
     default:
       return state;
   }

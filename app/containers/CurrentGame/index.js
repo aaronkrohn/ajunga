@@ -18,7 +18,7 @@ import GameOverview from 'components/GameOverview';
 import GameScore from 'components/GameScore';
 import CenteredSection from './CenteredSection';
 
-import { addFinalScore, addGamesWon } from './actions';
+import { addFinalScore, addGamesWon, changeServer } from './actions';
 
 export class CurrentGame extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   constructor(props) {
@@ -45,25 +45,26 @@ export class CurrentGame extends React.PureComponent { // eslint-disable-line re
         <GameScore
           currentGame={this.props.currentGame}
           handleFinalScore={this.handleFinalScore}
+          changeServer={this.props.changeServer}
         />
 
 
-        {/*<h2>Previous games</h2>*/}
-        {/*{*/}
-          {/*this.props.currentGame.score.map((score, index) => {*/}
-            {/*return (<div>*/}
-              {/*<span>{this.props.currentGame.player1.name} {score[0]}</span> |*/}
-              {/*<span> {this.props.currentGame.player2.name} {score[1]}</span>*/}
-            {/*</div>);*/}
-          {/*})*/}
-        {/*}*/}
+        <h2>Previous games</h2>
+        {
+          this.props.currentGame.score.map((score, index) => {
+            return (<div>
+              <span>{this.props.currentGame.player1.name} {score[0]}</span> |
+              <span> {this.props.currentGame.player2.name} {score[1]}</span>
+            </div>);
+          })
+        }
       </CenteredSection>
     );
   }
 }
 
 CurrentGame.propTypes = {
-  currentGame: PropTypes.object,
+  currentGame: PropTypes.object
 };
 
 const mapStateToProps = createStructuredSelector({
@@ -77,6 +78,9 @@ function mapDispatchToProps(dispatch) {
     },
     addGamesWon: (playerName) => {
       dispatch(addGamesWon(playerName));
+    },
+    changeServer: (playerName) => {
+      dispatch(changeServer(playerName));
     },
   };
 }

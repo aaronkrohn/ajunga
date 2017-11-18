@@ -75,8 +75,13 @@ const ServingBall = styled.span`
   right: -30px;
  
   ${props => props.left && css`
-		left: -30px;
-		right: auto;
+		left: -30px !important;
+		right: auto !important;
+	`}
+	 
+  ${props => props.switch && css`
+		left: auto;
+		right: -30px;
 	`}
 	 
   ${props => props.ballSize && css`
@@ -94,7 +99,7 @@ class GameOverview extends React.PureComponent { // eslint-disable-line react/pr
   }
 
   render() {
-    const { player1, player2, player1toStart } = this.props.currentGame;
+    const { player1, player2, player1toStart, changeServer } = this.props.currentGame;
 
     return (
       <section>
@@ -107,7 +112,7 @@ class GameOverview extends React.PureComponent { // eslint-disable-line react/pr
 
           <GridThird>
             <div style={{ display: 'flex', width: 200, margin: 'auto', position: 'relative' }}>
-              <ServingBall left={player1toStart} ballSize={10}/>
+              <ServingBall left={changeServer ? !player1toStart : player1toStart} switch={changeServer} ballSize={10} />
 
               <GridThird>
                 <PlayerScore right>{player1.gamesWon}</PlayerScore>

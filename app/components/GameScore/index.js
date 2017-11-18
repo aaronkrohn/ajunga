@@ -45,10 +45,20 @@ class GameScore extends React.PureComponent { // eslint-disable-line react/prefe
     }
   }
 
+  checkSwitchServer() {
+    const { score1, score2 } = this.state;
+
+    if ((score1 + score2) % 2 === 1) {
+      this.props.changeServer();
+    }
+  }
+
   addPoint(event, isPlayerLeft) {
     if (this.state.wonGame) {
       return;
     }
+
+    this.checkSwitchServer();
 
     const isPlayer1 = isPlayerLeft ? 'score1' : 'score2';
     // SetState is asynchronous, so we have callback.
@@ -101,6 +111,8 @@ class GameScore extends React.PureComponent { // eslint-disable-line react/prefe
 
 GameScore.propTypes = {
   handleFinalScore: PropTypes.func.isRequired,
+  currentGame: PropTypes.object.isRequired,
+  changeServer: PropTypes.func.isRequired,
 };
 
 export default GameScore;
