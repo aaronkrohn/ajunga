@@ -7,3 +7,6 @@
 *.iml
 out
 gen
+
+# External packages
+node_modules/
