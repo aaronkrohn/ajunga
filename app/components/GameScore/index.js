@@ -6,10 +6,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import { global } from "../../utils/constants";
 
-const Colours = {
-  gold: '#A68756',
-};
 const GameScoreDisplay = styled.div `
   display: table;
   width: 100%;
@@ -20,11 +18,11 @@ const GameScoreNUmber = styled.div `
   vertical-align: middle;
   width: 50%;
   height: 100%;
-  color: ${Colours.gold};
+  color: ${global.colour.gold};
   font-size: 190px;
   line-height: 1;
   padding: 15px;
-  border: 4px solid ${Colours.gold};
+  border: 4px solid ${global.colour.gold};
   
   &:last-child {
     border-left: 0;
@@ -32,7 +30,7 @@ const GameScoreNUmber = styled.div `
 `;
 const OverLay = styled.div`
   position: absolute;
-  background-color: ${Colours.gold};
+  background-color: ${global.colour.gold};
   top: 0;
   left: 0;
   right: 0;

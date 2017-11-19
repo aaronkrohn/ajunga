@@ -7,13 +7,14 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 import PropTypes from 'prop-types';
+import { global } from '../../utils/constants';
 
 
 //TODO Normally you would put theses styles in their own files
 
 const OverViewTitle = styled.h5 `
   width: 100%;
-  color: #A68756;
+  color: ${global.colour.gold};
   margin: 0 0 5px 0;
   text-align: center;
   font-weight: lighter
@@ -25,7 +26,7 @@ const GridThird = styled.div`
 
 const PlayerTitle = styled.h3`
   text-transform: uppercase;
-  color: #A68756;
+  color: ${global.colour.gold};
   font-size: 38px;
   text-align: left;
   margin: 0;
@@ -40,18 +41,18 @@ const PlayerTitle = styled.h3`
 `;
 
 const PlayerScore = styled.div`
-  color: #272628;
+  color: ${global.colour.black};
   font-weight: bolder;
   font-size: 24px;
   width: 60px;
   line-height: 50px;
   text-align: center;
-  border: 1px solid #A68756;
-  background: #A68756;
+  border: 1px solid ${global.colour.gold};
+  background: ${global.colour.gold};
 
   
   ${props => props.outline && css`
-    color: #A68756; 
+    color: ${global.colour.gold}; 
     background: inherit;
     margin: auto
   `}
@@ -93,10 +94,6 @@ const ServingBall = styled.span`
 
 
 class GameOverview extends React.PureComponent {
-  switcherServer(force) {
-    // TODO Think we need to add each score to store to make things easier for us. INCREMENT_SCORE with payload of name.
-  }
-
   render() {
     const { player1, player2, player1toStart, changeServer } = this.props.currentGame;
 
@@ -111,7 +108,7 @@ class GameOverview extends React.PureComponent {
 
           <GridThird>
             <div style={{ display: 'flex', width: 200, margin: 'auto', position: 'relative' }}>
-              <ServingBall left={changeServer ? !player1toStart : player1toStart} switch={changeServer} ballSize={10} />
+              <ServingBall left={changeServer ? !player1toStart : player1toStart} switch={changeServer} ballSize={10}/>
 
               <GridThird>
                 <PlayerScore right>{player1.gamesWon}</PlayerScore>
